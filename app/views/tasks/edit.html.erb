@@ -1,0 +1,10 @@
+<form action=<%= task_path(@task) %> method="post">
+  <input type="hidden" name="_method" value="patch">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input type="text" name="name" value="<%= @task.name %>">
+  <input type="text" name="details" value="<%= @task.details %>">
+  <input type="checkbox" name="status">
+  <input type="submit" value="Submit">
+</form>
+
+

@@ -1,0 +1,7 @@
+<%= @task.name %> - <%=  @task.details %> - <%= @task.status ? "Done" : "To be done" %>
+
+<a href="<%= task_edit_path(@task) %>">Update</a>
+
+<%= link_to "Delete", task_destroy_path, method: "delete" %>
+
+

@@ -1,0 +1,22 @@
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      [<%= task.status ? "X" : " " %>] <a href="tasks_path(task) %>"> <%= task.name %> </a>
+      <%= link_to "Delete", task_destroy_path(task), method: "delete" %>
+      <a href="<%= task_edit_path(task) %>">Update</a>
+
+      <form action=<%= task_path(task) %> method="post">
+        <input type="hidden" name="_method" value="patch">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+        <input type="text" name="name" class="hidden" value="<%= task.name %>">
+        <input type="text" name="details" class="hidden" value="<%= task.details %>">
+        <input type="checkbox" name="status" checked="true" class="hidden">
+        <input type="submit" value="Mark as Done">
+    </form>
+
+    </li>
+  <% end %>
+</ul>
+
+<a href="<%= tasks_new_path %>">Create a new task</a>
